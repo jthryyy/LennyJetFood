@@ -38,7 +38,7 @@ export function NavigationBar(): JSX.Element {
 
       <Flex flexDirection="row" gridGap="1rem" fontSize="1.5rem">
         <NavigationLink to="/about">ABOUT</NavigationLink>
-        <NavigationLink to="/map">MAP</NavigationLink>
+        <NavigationLink to="/">MAP</NavigationLink>
       </Flex>
     </Flex>
   )
