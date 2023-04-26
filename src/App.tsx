@@ -1,14 +1,26 @@
-import React, { Component } from "react";
-import "./style.css";
+import React from 'react'
+import { Routes, Route, BrowserRouter } from 'react-router-dom'
+import { About, Map, NavigationBar } from './components'
+import { Flex } from './utils/Flex'
+import homeImage from './images/homeImage.jpeg'
 
-class App extends Component {
-  render() {
-    return (
-      <div className="w-full min-h-screen flex justify-center">
-        <h1> Hello, World! </h1>
+function App() {
+  return (
+    <BrowserRouter>
+      <div style={{ margin: '-8px' }}>
+        <img src={homeImage} width="100%" height="100%" />
+        <Flex flexDirection="column">
+          <NavigationBar />
+          <Flex padding="1.5rem">
+            <Routes>
+              <Route path="/about" element={<About />} />
+              <Route path="/map" element={<Map />} />
+            </Routes>
+          </Flex>
+        </Flex>
       </div>
-    );
-  }
+    </BrowserRouter>
+  )
 }
 
-export default App;
+export default App

@@ -1,7 +1,7 @@
 {
-  "name": "react_boilerplate",
+  "name": "lenny-and-jet-food",
   "version": "1.1.0",
-  "description": "React boilerplate template",
+  "description": "Lenny and Jet Food Ratings",
   "main": "src/index.ts",
   "scripts": {
     "postinstall": "npm run css",
@@ -11,7 +11,13 @@
     "analyze": "env NODE_ENV=analyze webpack --mode development --config webpack.dev.js",
     "css": "npx tailwindcss build -i tailwind/tailwind.css -o src/style.css"
   },
-  "author": "Jareth Rader <jarethrdev@gmail.com>",
+  "eslintConfig": {
+    "extends": [
+      "react-app",
+      "react-app/jest"
+    ]
+  },
+  "author": "Jet Rader <jethary.rader@gmail.com>",
   "license": "ISC",
   "devDependencies": {
     "@babel/cli": "^7.13.0",
@@ -20,6 +26,7 @@
     "@babel/preset-react": "^7.12.13",
     "@babel/preset-typescript": "^7.15.0",
     "@fullhuman/postcss-purgecss": "^4.0.2",
+    "@types/lodash": "^4.14.194",
     "@types/react": "^18.0.33",
     "@types/react-dom": "^18.0.11",
     "babel-loader": "^8.2.2",
@@ -42,9 +49,20 @@
   },
   "dependencies": {
     "@pmmmwh/react-refresh-webpack-plugin": "^0.5.10",
+    "@testing-library/jest-dom": "^5.16.5",
+    "@testing-library/react": "^13.4.0",
+    "@testing-library/user-event": "^13.5.0",
+    "@types/jest": "^27.5.2",
+    "@types/node": "^16.18.24",
+    "@types/react": "^18.0.38",
+    "@types/react-dom": "^18.0.11",
+    "file-loader": "^6.2.0",
+    "lodash": "^4.17.21",
     "postcss-loader": "^5.1.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-is": "^16.13.1",
+    "react-router-dom": "^6.10.0",
     "tailwindcss": "^2.2.7",
     "ts-loader": "^8.0.17"
   }
