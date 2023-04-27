@@ -8,8 +8,16 @@ export const About = (): JSX.Element => {
       width="98%"
       backgroundColor="white"
       padding="1.5rem"
+      justifyContent="centFer"
+      flexDirection="column"
     >
-      this is the about page
+      <Flex borderBottom="3px solid grey" width="4rem" />
+      <Flex fontSize="3rem" marginY="1.5rem">
+        About
+      </Flex>
+      <Flex fontSize="2rem">
+        Lenny and Jet love food. But it wasn't always that way.
+      </Flex>
     </Flex>
   )
 }
