@@ -1,20 +1,17 @@
 import * as React from 'react'
 import L from 'leaflet'
 import { MapContainer, TileLayer, Marker } from 'react-leaflet'
+
 import icon from 'leaflet/dist/images/marker-icon.png'
 import { Flex } from '../utils/Flex'
-import {
-  getAlphabeticalData,
-  getPrice,
-  getStarRatings,
-  getYearData,
-} from '../utils/utils'
-import { useFilterOptions, useRestaurantData } from '../hooks'
+import { scrollToActiveButton } from '../utils/ScrollToActiveButton'
+import { getAlphabeticalData, getYearData } from '../utils/utils'
 import { FilterMenu } from '../atoms/FilterMenu'
+import { useFilterOptions, useRestaurantData } from '../hooks'
+import { PopupInformation, SortBy, StyledPopup } from '../atoms'
 import './components.css'
-import { Filter } from '../types'
-import { SortBy, StyledPopup } from '../atoms'
-import { startCase } from 'lodash'
+
+import type { Filter, MarkerWithPopup } from '../types'
 
 export const Map = (): JSX.Element => {
   const locations = useRestaurantData()
@@ -22,17 +19,15 @@ export const Map = (): JSX.Element => {
   //   const yearLoc = getYearData(locations)
   const [showFilters, setFiltered] = React.useState<Filter | null>(null)
   const [showOption, setOption] = React.useState<boolean>(false)
-
+  const [showCurrentButton, setCurrentButton] = React.useState<number | null>(
+    null
+  )
+  const mapRef = React.useRef(null)
   const filtered = useFilterOptions(showFilters, alphabeticalLoc)
-  const home: L.LatLngExpression = [40.803042464648705, -73.95681619540294]
+  const centerPoint: L.LatLngExpression = [40.7423, -73.9646]
   const DefaultIcon = L.icon({
     iconUrl: icon,
   })
-
-  const [showRes, setRes] = React.useState<string | null>(null)
-  const handleClick = (name: string): void => {
-    setRes(name)
-  }
   const handleFilterClick = (filter: Filter | null): void => {
     setFiltered(filter)
   }
@@ -49,14 +44,39 @@ export const Map = (): JSX.Element => {
   //   } else if (showOption) {
   //     data = yearLoc
   //   } else {
-  //     data = alphabeticalLoc
+  //     data = alphabeticalLocz
   //   }
-  //   console.log(data)
-  //   console.log(filtered)
   //   const sortedData = showOption === true ? yearLoc : alphabeticalLoc
+
   const data = filtered != null ? filtered : alphabeticalLoc
+  const restaurantRefs = React.useMemo(
+    () =>
+      data.map(() => {
+        return React.createRef<MarkerWithPopup>()
+      }),
+    [data]
+  )
+  const handleClick = (index: number) => {
+    if (restaurantRefs[index] && restaurantRefs[index].current) {
+      const marker = restaurantRefs[index].current
+      if (marker != null) {
+        if (showCurrentButton === index) {
+          marker.closePopup()
+        } else {
+          marker.openPopup()
+        }
+      }
+    }
+    setCurrentButton(showCurrentButton === index ? null : index)
+  }
+  const activeButtonRef = React.useRef(null)
+  React.useEffect(() => {
+    scrollToActiveButton(activeButtonRef)
+  }, [showCurrentButton])
+
   return (
     <Flex
+      zIndex={10}
       width="98%"
       height="42rem"
       backgroundColor="grey"
@@ -77,12 +97,14 @@ export const Map = (): JSX.Element => {
             backgroundColor="white"
             borderRadius="10px"
           >
-            {data.map(res => (
+            {data.map((res, index) => (
               <Flex
+                ref={showCurrentButton === index ? activeButtonRef : null}
                 className="Map-buttons"
                 padding="0.5rem"
                 key={res.name}
-                onClick={() => handleClick(res.name)}
+                onClick={() => handleClick(index)}
+                backgroundColor={showCurrentButton === index ? 'pink' : 'white'}
               >
                 {res.name}
               </Flex>
@@ -93,40 +115,28 @@ export const Map = (): JSX.Element => {
         </Flex>
       </Flex>
       <MapContainer
-        center={home}
-        zoom={13}
+        center={centerPoint}
+        zoom={12}
         scrollWheelZoom={false}
         style={{ height: '35rem', width: '50%' }}
+        ref={mapRef}
       >
         <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
-        {data.map(res => (
-          <React.Fragment key={res.name}>
-            <Marker position={res.coordinate} icon={DefaultIcon}>
-              <StyledPopup>
-                <Flex flexDirection="column" gridGap="4px">
-                  <Flex fontWeight={500} flexDirection="row">
-                    <Flex> {res.name}</Flex>
-                    {res.permanantlyClosed ? (
-                      <Flex color="red" marginLeft="4px">
-                        Permanently Closed
-                      </Flex>
-                    ) : null}
-                  </Flex>
-                  <Flex>{getPrice(res.price)}</Flex>
-                  <Flex>{getStarRatings(res.rating)}</Flex>
-                  <Flex>First visited: {res.firstVisit}</Flex>
-                  <Flex>
-                    {startCase(res.type)}
-                    {res.subcategory != null
-                      ? ', ' + startCase(res.subcategory)
-                      : null}
-                  </Flex>
-                  <Flex>{res.description}</Flex>
-                  {res.link ? <a href={res.link}>Website</a> : null}
-                </Flex>
-              </StyledPopup>
-            </Marker>
-          </React.Fragment>
+        {data.map((res, index) => (
+          <Marker
+            key={res.name}
+            position={res.coordinate}
+            icon={DefaultIcon}
+            ref={restaurantRefs[index]}
+            eventHandlers={{ click: () => setCurrentButton(index) }}
+          >
+            <StyledPopup
+              //   eventHandlers={{ click: () => setCurrentButton(null) }}
+              closeButton
+            >
+              <PopupInformation restuarantData={res} />
+            </StyledPopup>
+          </Marker>
         ))}
       </MapContainer>
     </Flex>

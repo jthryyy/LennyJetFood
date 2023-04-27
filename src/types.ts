@@ -1,3 +1,5 @@
+import L from 'leaflet'
+
 export type FoodType =
   | 'southern comfort'
   | 'pizza'
@@ -84,4 +86,10 @@ export type RestaurantData = {
 
 export type Data = {
   restaurant: RestaurantData[]
+}
+export interface MarkerWithPopup extends L.Marker {
+  bindPopup(
+    content: string | HTMLElement | L.Popup,
+    options?: L.PopupOptions
+  ): this
 }

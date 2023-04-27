@@ -1,11 +1,11 @@
 import * as React from 'react'
 import { Flex } from '../utils/Flex'
 
-export const About = (): JSX.Element => {
+export const Footer = (): JSX.Element => {
   return (
     <Flex
       width="98%"
-      backgroundColor="white"
+      backgroundColor="gray"
       padding="1.5rem"
       justifyContent="center"
       flexDirection="column"
@@ -13,11 +13,9 @@ export const About = (): JSX.Element => {
       color="black"
     >
       <Flex borderBottom="3px solid grey" width="4rem" />
-      <Flex fontSize="3rem" marginY="1.5rem">
-        About
-      </Flex>
-      <Flex fontSize="2rem">
-        Lenny and Jet love food. But it wasn't always that way.
+      <Flex fontSize="1rem" flexDirection="row">
+        <Flex marginRight="1.5rem">Contact</Flex>
+        <Flex>Copywrite 2023 </Flex>
       </Flex>
     </Flex>
   )

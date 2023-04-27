@@ -110,6 +110,7 @@ export const getPrice = (price: number): JSX.Element => {
           <Flex>$</Flex>
           <Flex>$</Flex>
           <Flex>$</Flex>
+          <Flex>$</Flex>
         </>
       )
       break

@@ -1,18 +1,6 @@
 import * as React from 'react'
-import { NavLink } from 'react-router-dom'
-import styled from 'styled-components'
 import { Flex } from '../utils/Flex'
-
-const NavigationLink = styled(NavLink)`
-  color: white;
-  display: flex;
-  border-bottom: 3px solid transparent;
-  text-decoration: none;
-
-  &:hover {
-    color: #b8b8b8;
-  }
-`
+import './components.css'
 
 export function NavigationBar(): JSX.Element {
   return (
@@ -37,8 +25,9 @@ export function NavigationBar(): JSX.Element {
       </Flex>
 
       <Flex flexDirection="row" gridGap="1rem" fontSize="1.5rem">
-        <NavigationLink to="/about">ABOUT</NavigationLink>
-        <NavigationLink to="/">MAP</NavigationLink>
+        <a href="#about" className="About">
+          ABOUT
+        </a>
       </Flex>
     </Flex>
   )

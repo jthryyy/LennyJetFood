@@ -1,3 +1,11 @@
 .Map-buttons:hover {
   color: gray;
 }
+
+.About {
+  color: white;
+  text-decoration: none;
+}
+.About:hover {
+  color: gray;
+}

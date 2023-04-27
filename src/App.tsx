@@ -2,7 +2,7 @@ import React from 'react'
 import { Routes, Route, BrowserRouter } from 'react-router-dom'
 import { Flex } from './utils/Flex'
 import { useTranslateOnScroll } from './hooks'
-import { About, Map, NavigationBar } from './components'
+import { About, Footer, Map, NavigationBar } from './components'
 import homeImage from './images/homeImage.jpeg'
 
 function App() {
@@ -12,16 +12,18 @@ function App() {
     <BrowserRouter>
       <div style={{ margin: '-8px' }}>
         <img src={homeImage} width="100%" />
-        <About />
+        <a href="#about" style={{ textDecoration: 'none' }}>
+          <About />
+        </a>
         <Flex flexDirection="column">
           <NavigationBar />
           <Flex ref={elementRef}>
             <Routes>
               <Route path="/" element={<Map />} />
-              <Route path="/about" element={<About />} />
             </Routes>
           </Flex>
         </Flex>
+        <Footer />
       </div>
     </BrowserRouter>
   )
