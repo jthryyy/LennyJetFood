@@ -19,7 +19,7 @@ import { startCase } from 'lodash'
 export const Map = (): JSX.Element => {
   const locations = useRestaurantData()
   const alphabeticalLoc = getAlphabeticalData(locations)
-  const yearLoc = getYearData(locations)
+  //   const yearLoc = getYearData(locations)
   const [showFilters, setFiltered] = React.useState<Filter | null>(null)
   const [showOption, setOption] = React.useState<boolean>(false)
 
@@ -43,17 +43,18 @@ export const Map = (): JSX.Element => {
       setOption(true)
     }
   }
-  let data = alphabeticalLoc
-  if (filtered != null) {
-    data = filtered
-  } else if (showOption) {
-    data = yearLoc
-  } else {
-    data = alphabeticalLoc
-  }
-  console.log(showOption)
-  console.log(data)
-  console.log(filtered)
+  //   let data = alphabeticalLoc
+  //   if (filtered != null) {
+  //     data = filtered
+  //   } else if (showOption) {
+  //     data = yearLoc
+  //   } else {
+  //     data = alphabeticalLoc
+  //   }
+  //   console.log(data)
+  //   console.log(filtered)
+  //   const sortedData = showOption === true ? yearLoc : alphabeticalLoc
+  const data = filtered != null ? filtered : alphabeticalLoc
   return (
     <Flex
       width="98%"
