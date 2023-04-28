@@ -4,7 +4,7 @@ import { Flex } from '../utils/Flex'
 export const About = (): JSX.Element => {
   return (
     <Flex
-      width="98%"
+      width="96.65%"
       backgroundColor="white"
       padding="1.5rem"
       justifyContent="center"

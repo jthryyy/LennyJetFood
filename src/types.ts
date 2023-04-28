@@ -30,6 +30,10 @@ export type FoodType =
   | 'vietnamese'
   | 'spanish'
   | 'mediterranean'
+  | 'portuguese'
+  | 'lounge'
+  | 'afro-portuguese'
+  | 'english'
 
 export type Neighborhood =
   | 'Harlem'
@@ -69,6 +73,7 @@ export type Subcategory =
   | 'jazz'
   | 'vegan'
   | 'dog friendly'
+  | 'pub'
 
 export type Filter = FoodType | Neighborhood | Rating | 'permanantelyClosed'
 

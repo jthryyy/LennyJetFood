@@ -1,0 +1,259 @@
+{
+  "restaurant": [
+    {
+      "name": "Barcade",
+      "coordinate": [40.722097554773555, -74.0446897937126],
+      "description": "Went here for an engagement party. Wide selection of beer and wine and games to play.",
+      "type": "bar",
+      "link": "https://barcade.com/jerseycity/",
+      "rating": 3,
+      "price": 2,
+      "location": { "state": "New Jersey", "country": "USA" },
+      "firstVisit": "2022"
+    },
+    {
+      "name": "Miso Ramen",
+      "coordinate": [40.72183718844194, -74.04623574018633],
+      "description": "Lenny really liked the pork ramen here. I had their chicken dumplings which weren't bad.",
+      "type": "japenese",
+      "subcategory": "ramen",
+      "link": "http://www.ramenmiso.com/",
+      "rating": 3,
+      "price": 2,
+      "location": { "state": "New Jersey", "country": "USA" },
+      "firstVisit": "2022"
+    },
+    {
+      "name": "Valenca",
+      "coordinate": [40.68746593698939, -74.1986855464043],
+      "description": "They serve some food on hot plates, I had a tuna steak that you heat on the hot plate which was pretty good. Lenny had a 50$ steak. The prices seem high but portions are huge.",
+      "type": "portuguese",
+      "link": "http://valencarestaurantnj.com/",
+      "rating": 3,
+      "price": 2,
+      "location": { "state": "New Jersey", "country": "USA" },
+      "firstVisit": "2021"
+    },
+    {
+      "name": "Perkins Restaurant & Bakery",
+      "coordinate": [40.277375404807735, -74.26085178853793],
+      "description": "A diner we stopped at because the other restaurants were closed. The food was fairly bland and not my favorite",
+      "type": "american",
+      "link": "https://stores.perkinsrestaurants.com/us/nj/freehold/3445-route-9.html",
+      "rating": 1,
+      "price": 2,
+      "location": { "state": "New Jersey", "country": "USA" },
+      "firstVisit": "2019",
+      "permanentlyClosed": true
+    },
+    {
+      "name": "Cross Culture",
+      "coordinate": [40.40592254592438, -74.63974415044034],
+      "description": "Indian food pretty flavorful for food you can find in Princeton. A staple for people who live here.",
+      "type": "indian",
+      "link": "http://www.crossculturerestaurant.com/",
+      "rating": 3,
+      "price": 2,
+      "location": { "state": "New Jersey", "country": "USA" },
+      "firstVisit": "2018"
+    },
+    {
+      "name": "Nomad Pizza",
+      "coordinate": [40.42351266503136, -74.76450139155453],
+      "description": "Was pretty excited about the pizza here but the dough was a bit chewy and the sauce was lacking",
+      "type": "pizza",
+      "link": "http://www.nomadpizzaco.com/",
+      "rating": 2,
+      "price": 2,
+      "location": { "state": "New Jersey", "country": "USA" },
+      "firstVisit": "2019"
+    },
+    {
+      "name": "Boro Bean",
+      "coordinate": [40.38980524305514, -74.76110356665504],
+      "description": "Had a wrap for brunch and it was pretty tasty. A pleasant quiet place to chill outside",
+      "type": "coffee",
+      "subcategory": "brunch",
+      "rating": 3,
+      "price": 2,
+      "location": { "state": "New Jersey", "country": "USA" },
+      "firstVisit": "2019"
+    },
+    {
+      "name": "Peach Street Distillers",
+      "coordinate": [39.296326087468486, -108.29045844027301],
+      "description": "The best bloody marys and really good old fashions. Their taco salad was spicy and flavorful. Phil the head distiller is very nice and gave us a free bottle of tequila",
+      "type": "distillery",
+      "rating": 4,
+      "price": 2,
+      "location": { "state": "Colorado", "country": "USA" },
+      "firstVisit": "2022"
+    },
+    {
+      "name": "Ale House",
+      "coordinate": [39.10291020105858, -108.55371140709673],
+      "description": "The service was really slow when we were here, the food was okay and kind of cold by the time we got it.",
+      "type": "bar grill",
+      "rating": 2,
+      "price": 2,
+      "location": { "state": "Colorado", "country": "USA" },
+      "firstVisit": "2019"
+    },
+    {
+      "name": "Main Street Bagels",
+      "coordinate": [39.08019635106509, -108.56238256851903],
+      "description": "There's a reason why you should never eat a bagel outside of NYC. These bagels were very doughy.",
+      "type": "bagels",
+      "rating": 1,
+      "link": "http://gjmainstreetbagels.com/",
+      "price": 1,
+      "location": { "state": "Colorado", "country": "USA" },
+      "firstVisit": "2019"
+    },
+    {
+      "name": "Pizzeria Limone",
+      "coordinate": [41.02240684447533, -111.97843309001216],
+      "description": "Located inside Terminal A of the SLC airport, this pizza place really hits the spot while traveling. The pizzas are made fresh with a pizza oven.",
+      "type": "pizza",
+      "rating": 4,
+      "link": "http://gjmainstreetbagels.com/",
+      "price": 2,
+      "location": { "state": "Utah", "country": "USA" },
+      "firstVisit": "2023"
+    },
+    {
+      "name": "American Express Centurion Lounge Seattle",
+      "coordinate": [41.02240684447533, -111.97843309001216],
+      "description": "Spent like 6 hrs here in 2023; the space was nice and hidden. Food was well seasoned and lots of veggie options. Lenny didnt like that there were no burger options for lunch. Their bloody mary was very good",
+      "type": "lounge",
+      "rating": 3,
+      "price": 2,
+      "location": { "state": "Washington", "country": "USA" },
+      "firstVisit": "2023"
+    },
+    {
+      "name": "Rooftop Lounge",
+      "coordinate": [33.71323548988128, -117.68445083773761],
+      "description": "Only had drinks here. They were good and had a nice view but def filled with a bunch of california moms eating brunch",
+      "type": "cocktail bar",
+      "rating": 3,
+      "price": 2,
+      "location": { "state": "California", "country": "USA" },
+      "firstVisit": "2023"
+    },
+    {
+      "name": "Anepalco Mexican Restaurant",
+      "coordinate": [33.83680702936362, -117.88588778762586],
+      "description": "Pretty solid food and appetizers, the tuna tostada was disappointing though. But their Not Paella dish was really good.",
+      "type": "mexican",
+      "rating": 3,
+      "price": 2,
+      "location": { "state": "California", "country": "USA" },
+      "firstVisit": "2023"
+    },
+    {
+      "name": "Gen Korean BBQ House",
+      "coordinate": [33.9099522771951, -117.92177957246038],
+      "description": "A chain. Had to cook the kbbq ourselves but was pretty tasty. Loved the Cajun shrimp.",
+      "type": "korean",
+      "subcategory": "kbbq",
+      "rating": 3,
+      "price": 2,
+      "location": { "state": "California", "country": "USA" },
+      "firstVisit": "2023"
+    },
+    {
+      "name": "Pizza Express",
+      "coordinate": [51.507933923964536, -0.0739639840509881],
+      "description": "A chain. Pizza was not bad and hit the spot after a long day of travel.",
+      "type": "pizza",
+      "rating": 3,
+      "price": 2,
+      "location": { "state": "England", "country": "United Kingdom" },
+      "firstVisit": "2022"
+    },
+    {
+      "name": "Nando's",
+      "coordinate": [51.523006120461375, -0.1430623798239629],
+      "description": "A fast food chain. Chicken is very tasty and seasoned. The 2 level spice was not bad. Could do spice level 3 probably. The coleslaw and chips were pretty good. They have boneless and with bone options.",
+      "type": "afro-portuguese",
+      "rating": 4,
+      "price": 1,
+      "location": { "state": "England", "country": "United Kingdom" },
+      "firstVisit": "2022"
+    },
+    {
+      "name": "Mielo",
+      "coordinate": [51.521436938574816, -0.15687302945342738],
+      "description": "Food was pretty good. They had a sea bass civeche and penne pasta with blue cheese. They had bread with hummus with olives and pickles for the complimentary appetizer. Desserts were not too sweet.",
+      "type": "mediterranean",
+      "rating": 3,
+      "price": 2,
+      "location": { "state": "England", "country": "United Kingdom" },
+      "firstVisit": "2022"
+    },
+    {
+      "name": "Mercato Mayfair",
+      "coordinate": [51.51463652556637, -0.152429603050904],
+      "description": "Lots of different food options in cart style. They had a gin bar and the cocktails there were all very good",
+      "type": "english",
+      "subcategory": "marketplace",
+      "rating": 4,
+      "price": 2,
+      "location": { "state": "England", "country": "United Kingdom" },
+      "firstVisit": "2022"
+    },
+    {
+      "name": "Negroni's",
+      "coordinate": [51.51560807530478, -0.13225404533133847],
+      "description": "Went here for drinks only. They had negroni sbagliatos with presecco!",
+      "type": "bar",
+      "rating": 3,
+      "price": 2,
+      "location": { "state": "England", "country": "United Kingdom" },
+      "firstVisit": "2022"
+    },
+    {
+      "name": "Bun House",
+      "coordinate": [51.51373969203059, -0.12901154498355116],
+      "description": "Everything here is delicious. They had many types of buns, loved the veggie buns!",
+      "type": "chinese",
+      "rating": 4,
+      "price": 2,
+      "location": { "state": "England", "country": "United Kingdom" },
+      "firstVisit": "2022"
+    },
+    {
+      "name": "Ermei Sichuan Restaurant",
+      "coordinate": [51.51254388651632, -0.13177367490944408],
+      "description": "Was crowded but food is really good! The water boiled fish was super good with a numbing spice",
+      "type": "chinese",
+      "rating": 4,
+      "price": 2,
+      "location": { "state": "England", "country": "United Kingdom" },
+      "firstVisit": "2022"
+    },
+    {
+      "name": "The Clarence",
+      "coordinate": [51.50910577080626, -0.14150117595280604],
+      "description": "Typical pub experience. Had a fish pie for the first time and it was not bad but really heavy.",
+      "type": "english",
+      "subcategory": "pub",
+      "rating": 3,
+      "price": 2,
+      "link": "https://www.nicholsonspubs.co.uk/restaurants/london/theclarencemayfairlondon?utm_source=google&utm_medium=organic&utm_campaign=gmb",
+      "location": { "state": "England", "country": "United Kingdom" },
+      "firstVisit": "2022"
+    },
+    {
+      "name": "Hyde Park Winter Wonderland",
+      "coordinate": [51.50693812972392, -0.15555201079321773],
+      "description": "Seasonal location with a bunch of food for the holiday spirits. We had hot cocoa from a stand that was really chocolate-y.",
+      "type": "english",
+      "rating": 3,
+      "price": 2,
+      "location": { "state": "England", "country": "United Kingdom" },
+      "firstVisit": "2022"
+    }
+  ]
+}

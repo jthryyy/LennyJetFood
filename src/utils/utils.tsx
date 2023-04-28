@@ -2,7 +2,46 @@ import * as React from 'react'
 import { v4 as uuidv4 } from 'uuid'
 import { Flex } from './Flex'
 import { StarIcon } from '../icons/starIcon'
-import type { Data, Rating, RestaurantDataWithId } from '../types'
+import type {
+  Data,
+  Filter,
+  MarkerWithPopup,
+  Rating,
+  RestaurantDataWithId,
+} from '../types'
+
+//  get the filtered options to filter the restaurant info
+export const getFilterOptions = (
+  filter: Filter | null,
+  restaurants: RestaurantDataWithId[]
+): RestaurantDataWithId[] => {
+  if (filter == null) return restaurants
+
+  return restaurants.reduce((acc: RestaurantDataWithId[], current) => {
+    if (
+      current.rating === filter ||
+      current.neighborhood === filter ||
+      (current.permanantlyClosed && filter === 'permanantelyClosed') ||
+      current.type === filter
+    ) {
+      return [...acc, current]
+    }
+    return acc
+  }, [])
+}
+
+//  get the restaurant refs for assigning the refs to the different popups and buttons
+export const getRestaurantRefs = (
+  restaurantDataWithIds: RestaurantDataWithId[]
+): React.RefObject<MarkerWithPopup>[] => {
+  return React.useMemo(
+    () =>
+      restaurantDataWithIds.map(() => {
+        return React.createRef<MarkerWithPopup>()
+      }),
+    [restaurantDataWithIds]
+  )
+}
 
 export const getSortedData = (
   data: Data | null,

@@ -104,7 +104,7 @@ export const FilterMenu = (props: FilterMenuProps): JSX.Element => {
   ))
 
   return (
-    <Flex flexDirection="row" padding="1rem">
+    <Flex flexDirection="row" paddingX="1rem">
       <Flex flexDirection="row">
         <Flex>Filter</Flex>
         {showMenu ? (
@@ -114,7 +114,13 @@ export const FilterMenu = (props: FilterMenuProps): JSX.Element => {
         )}
       </Flex>
       {showMenu ? (
-        <Flex flexDirection="row" cursor="pointer">
+        <Flex
+          flexDirection="row"
+          cursor="pointer"
+          position="absolute"
+          top="7rem"
+          right="58%"
+        >
           <Flex
             backgroundColor="white"
             border="1px solid black"
