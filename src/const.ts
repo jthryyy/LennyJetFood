@@ -1,3 +1,5 @@
+//  a list of the constants used throughout the project, organized in a const file
+
 export const FOOD_TYPES: string[] = [
   'american',
   'bagel',
@@ -37,7 +39,6 @@ export const NEIGHBORHOODS: string[] = [
   'Ktown',
   'Flatiron',
   'Chelsea',
-  'East Village',
   'West Village',
   'Washington Square Park',
   'Lower Manhattan',
@@ -55,6 +56,18 @@ export const NEIGHBORHOODS: string[] = [
   'DUMBO',
 ]
 
-export const RATING: number[] = [1, 1.5, 2, 2.5, 3, 3.5, 4, 4.5, 5]
+export const RATING: number[] = [1, 2, 3, 4, 5]
 
 export const ADVANCED: string[] = ['subcategory', 'permanantelyClosed']
+
+export const SUBCATEGORY: string[] = [
+  'brunch',
+  'sushi',
+  'ramen',
+  'kareoke',
+  'kbbq',
+  'marketplace',
+  'jazz',
+  'vegan',
+  'dog friendly',
+]

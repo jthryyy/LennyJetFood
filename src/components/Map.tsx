@@ -5,7 +5,7 @@ import { MapContainer, TileLayer, Marker } from 'react-leaflet'
 import icon from 'leaflet/dist/images/marker-icon.png'
 import { Flex } from '../utils/Flex'
 import { scrollToActiveButton } from '../utils/ScrollToActiveButton'
-import { getAlphabeticalData, getYearData } from '../utils/utils'
+import { getSortedData } from '../utils/utils'
 import { FilterMenu } from '../atoms/FilterMenu'
 import { useFilterOptions, useRestaurantData } from '../hooks'
 import { PopupInformation, SortBy, StyledPopup } from '../atoms'
@@ -15,21 +15,19 @@ import type { Filter, MarkerWithPopup } from '../types'
 
 export const Map = (): JSX.Element => {
   const locations = useRestaurantData()
-  const alphabeticalLoc = getAlphabeticalData(locations)
-  //   const yearLoc = getYearData(locations)
   const [showFilters, setFiltered] = React.useState<Filter | null>(null)
   const [showOption, setOption] = React.useState<boolean>(false)
   const [showCurrentButton, setCurrentButton] = React.useState<number | null>(
     null
   )
   const mapRef = React.useRef(null)
-  const filtered = useFilterOptions(showFilters, alphabeticalLoc)
   const centerPoint: L.LatLngExpression = [40.7423, -73.9646]
   const DefaultIcon = L.icon({
     iconUrl: icon,
   })
   const handleFilterClick = (filter: Filter | null): void => {
     setFiltered(filter)
+    setCurrentButton(null)
   }
   const handleSortByClick = (option: string | null): void => {
     if (option == null) {
@@ -38,17 +36,12 @@ export const Map = (): JSX.Element => {
       setOption(true)
     }
   }
-  //   let data = alphabeticalLoc
-  //   if (filtered != null) {
-  //     data = filtered
-  //   } else if (showOption) {
-  //     data = yearLoc
-  //   } else {
-  //     data = alphabeticalLocz
-  //   }
-  //   const sortedData = showOption === true ? yearLoc : alphabeticalLoc
-
-  const data = filtered != null ? filtered : alphabeticalLoc
+  const sortedLocations = getSortedData(
+    locations,
+    showOption ? 'year' : 'alphabetical'
+  )
+  const filtered = useFilterOptions(showFilters, sortedLocations)
+  const data = filtered != null ? filtered : sortedLocations
   const restaurantRefs = React.useMemo(
     () =>
       data.map(() => {
@@ -102,7 +95,7 @@ export const Map = (): JSX.Element => {
                 ref={showCurrentButton === index ? activeButtonRef : null}
                 className="Map-buttons"
                 padding="0.5rem"
-                key={res.name}
+                key={res.id}
                 onClick={() => handleClick(index)}
                 backgroundColor={showCurrentButton === index ? 'pink' : 'white'}
               >
@@ -124,13 +117,15 @@ export const Map = (): JSX.Element => {
         <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
         {data.map((res, index) => (
           <Marker
-            key={res.name}
+            key={res.id}
             position={res.coordinate}
             icon={DefaultIcon}
             ref={restaurantRefs[index]}
             eventHandlers={{ click: () => setCurrentButton(index) }}
           >
             <StyledPopup
+              //  TODO: the exit button on the Popup should also set CurrentButton to null
+              //    but it doesn't work to have it as below
               //   eventHandlers={{ click: () => setCurrentButton(null) }}
               closeButton
             >

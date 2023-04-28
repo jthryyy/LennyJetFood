@@ -1,23 +1,43 @@
 import * as React from 'react'
+import { v4 as uuidv4 } from 'uuid'
 import { Flex } from './Flex'
 import { StarIcon } from '../icons/starIcon'
-import type { Data, Rating, RestaurantData } from '../types'
+import type { Data, Rating, RestaurantDataWithId } from '../types'
 
-export const getAlphabeticalData = (data: Data | null): RestaurantData[] => {
+export const getSortedData = (
+  data: Data | null,
+  sortedOption: 'alphabetical' | 'year'
+): RestaurantDataWithId[] => {
+  //  if data is null, return an empty object
   if (data == null) return []
-  return data.restaurant.sort((a: RestaurantData, b: RestaurantData) =>
-    a.name.localeCompare(b.name)
+
+  // add a unique ID to every restaurant
+  const restaurantsWithIds = data.restaurant.reduce(
+    (acc: RestaurantDataWithId[], restaurant) => {
+      const id = uuidv4()
+      acc.push({ ...restaurant, id })
+      return acc
+    },
+    []
   )
-}
 
-export const getYearData = (data: Data | null): RestaurantData[] => {
-  if (data == null) return []
-  return data.restaurant
-    .sort((a: RestaurantData, b: RestaurantData) => a.firstVisit - b.firstVisit)
-    .reverse()
+  //  return the array of restaurants either in alphabetical order
+  //  or according to year first visited, sorted by latest to earliest
+  return sortedOption === 'year'
+    ? restaurantsWithIds
+        .sort(
+          (a: RestaurantDataWithId, b: RestaurantDataWithId) =>
+            a.firstVisit - b.firstVisit
+        )
+        .reverse()
+    : restaurantsWithIds.sort(
+        (a: RestaurantDataWithId, b: RestaurantDataWithId) =>
+          a.name.localeCompare(b.name)
+      )
 }
 
 export const getStarRatings = (rating: Rating): JSX.Element => {
+  //  depending on the ratings, return the correct number of stars
   let stars
   switch (rating) {
     case 1:
@@ -79,6 +99,7 @@ export const getStarRatings = (rating: Rating): JSX.Element => {
 }
 
 export const getPrice = (price: number): JSX.Element => {
+  //  according to the price number, return correct number of dollar signs
   let prices
   switch (price) {
     case 1: {

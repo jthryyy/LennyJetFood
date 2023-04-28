@@ -7,10 +7,12 @@ export const useRestaurantData = (): Data | null => {
   React.useEffect(() => {
     const fetchRestaurantData = async () => {
       try {
+        //  fetch the data from the restaurants.json file
         const response = await fetch('/restaurants.json')
         const data = await response.json()
         setRestaurantData(data)
       } catch (error) {
+        //  catch and log any error in console if there is an error with the GET request
         console.error(error)
       }
     }

@@ -3,5 +3,7 @@ import 'leaflet/dist/leaflet.css'
 import { createRoot } from 'react-dom/client'
 import App from './App'
 
-// @ts-ignore: root element is there
-createRoot(document.getElementById('root')).render(<App />)
+const rootElement = document.getElementById('root')
+if (rootElement) {
+  createRoot(rootElement).render(<App />)
+}

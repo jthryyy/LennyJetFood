@@ -1,5 +1,7 @@
 import L from 'leaflet'
 
+//  the type file for all the types used in the project
+
 export type FoodType =
   | 'southern comfort'
   | 'pizza'
@@ -84,6 +86,21 @@ export type RestaurantData = {
   subcategory?: Subcategory
 }
 
+export type RestaurantDataWithId = {
+  name: string
+  coordinate: [number, number]
+  description: string
+  type: FoodType
+  rating: Rating
+  price: number
+  neighborhood: Neighborhood
+  firstVisit: number
+  link?: string
+  permanantlyClosed?: boolean
+  subcategory?: Subcategory
+  id: string
+}
+
 export type Data = {
   restaurant: RestaurantData[]
 }
@@ -93,3 +110,8 @@ export interface MarkerWithPopup extends L.Marker {
     options?: L.PopupOptions
   ): this
 }
+export interface GenericProps {
+  onClick: () => void
+}
+
+export type FilterType = 'type' | 'neighborhood' | 'rating' | 'advanced'

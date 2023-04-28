@@ -2,10 +2,10 @@ import * as React from 'react'
 import startCase from 'lodash/startCase'
 import { Flex } from '../utils/Flex'
 import { getPrice, getStarRatings } from '../utils/utils'
-import type { RestaurantData } from '../types'
+import type { RestaurantDataWithId } from '../types'
 
 interface PopupInformationProps {
-  restuarantData: RestaurantData
+  restuarantData: RestaurantDataWithId
 }
 export const PopupInformation = (props: PopupInformationProps): JSX.Element => {
   const { restuarantData } = props
@@ -18,11 +18,12 @@ export const PopupInformation = (props: PopupInformationProps): JSX.Element => {
     subcategory,
     description,
     link,
+    id,
   } = restuarantData
   const isPermanentlyClosed = restuarantData.permanantlyClosed
 
   return (
-    <Flex flexDirection="column" gridGap="4px">
+    <Flex flexDirection="column" gridGap="4px" key={id}>
       <Flex fontWeight={500} flexDirection="row">
         <Flex> {name}</Flex>
         {isPermanentlyClosed ? (

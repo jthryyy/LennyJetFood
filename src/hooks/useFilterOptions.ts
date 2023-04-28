@@ -1,12 +1,12 @@
-import type { Filter, RestaurantData } from '../types'
+import type { Filter, RestaurantDataWithId } from '../types'
 
 export const useFilterOptions = (
   filter: Filter | null,
-  restaurants: RestaurantData[]
-): RestaurantData[] => {
+  restaurants: RestaurantDataWithId[]
+): RestaurantDataWithId[] => {
   if (filter == null) return restaurants
 
-  return restaurants.reduce((acc: RestaurantData[], current) => {
+  return restaurants.reduce((acc: RestaurantDataWithId[], current) => {
     if (
       current.rating === filter ||
       current.neighborhood === filter ||

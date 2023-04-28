@@ -1,0 +1,21 @@
+.Filter-buttons {
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+  background-color: white;
+  color: black;
+}
+
+.Filter-buttons:hover {
+  color: grey;
+}
+
+.Active-filter-buttons {
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+  background-color: pink;
+  color: black;
+}
+
+.Active-filter-buttons:hover {
+  color: grey;
+}
