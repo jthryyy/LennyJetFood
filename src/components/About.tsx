@@ -17,7 +17,7 @@ export const About = (): JSX.Element => {
         About
       </Flex>
       <Flex fontSize="2rem">
-        Lenny and Jet love food. But it wasn't always that way.
+        {"Lenny and Jet love food. But it wasn't always that way."}
       </Flex>
     </Flex>
   )

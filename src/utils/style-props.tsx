@@ -157,12 +157,7 @@ const gridStyles = (props: Types.StyleProps): CSSObject => {
 }
 
 const layoutStyles = (props: Types.StyleProps): CSSObject => {
-  const { size, ...styles } = pick(props, LAYOUT_PROPS) as CSSObject
-
-  if (size != null) {
-    styles.width = styles.width
-    styles.height = styles.height
-  }
+  const { ...styles } = pick(props, LAYOUT_PROPS) as CSSObject
 
   return styles
 }
