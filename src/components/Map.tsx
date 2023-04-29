@@ -1,26 +1,29 @@
 import * as React from 'react'
 import L from 'leaflet'
 import { MapContainer, TileLayer, Marker } from 'react-leaflet'
-
 import icon from 'leaflet/dist/images/marker-icon.png'
+
 import { Flex } from '../utils/Flex'
 import { scrollToActiveButton } from '../utils/ScrollToActiveButton'
+import { getFilterOptions, getRestaurantRefs } from '../utils/utils'
+import { useSortedLocations } from '../hooks'
 import {
-  getSortedData,
-  getFilterOptions,
-  getRestaurantRefs,
-} from '../utils/utils'
-import { FilterMenu } from '../atoms/FilterMenu'
-import { useRestaurantData } from '../hooks'
-import { PopupInformation, SortBy, StyledPopup } from '../atoms'
+  FilterMenu,
+  PopupInformation,
+  SortBy,
+  StyledPopup,
+  Toggle,
+} from '../atoms'
 import './components.css'
 
 import type { Filter } from '../types'
 
 export const Map = (): JSX.Element => {
-  const locations = useRestaurantData()
+  const [key, setKey] = React.useState(Date.now())
   const [showFilters, setFiltered] = React.useState<Filter | null>(null)
-  const [showOption, setOption] = React.useState<boolean>(false)
+  const [isYearOption, setShowYearSortByOption] = React.useState<boolean>(false)
+  const [isGlobalRestaurantList, setShowGlobalRestaurantList] =
+    React.useState<boolean>(false)
   const [showCurrentButton, setCurrentButton] = React.useState<number | null>(
     null
   )
@@ -30,21 +33,27 @@ export const Map = (): JSX.Element => {
     iconUrl: icon,
     iconSize: [20, 25],
   })
+  const handleToggle = (checked: boolean): void => {
+    setShowGlobalRestaurantList(checked)
+    setCurrentButton(null)
+    setFiltered(null)
+    setKey(Date.now())
+  }
   const handleFilterClick = (filter: Filter | null): void => {
     setFiltered(filter)
     setCurrentButton(null)
   }
   const handleSortByClick = (option: string | null): void => {
     if (option == null) {
-      setOption(false)
+      setShowYearSortByOption(false)
     } else {
-      setOption(true)
+      setShowYearSortByOption(true)
     }
   }
-  const sortedLocations = getSortedData(
-    locations,
-    showOption ? 'year' : 'alphabetical'
-  )
+  const sortedLocations = useSortedLocations({
+    isGlobalRestaurantList,
+    isYearOption,
+  })
   const filtered = getFilterOptions(showFilters, sortedLocations)
   const data = filtered != null ? filtered : sortedLocations
   const restaurantRefs = getRestaurantRefs(data)
@@ -64,7 +73,6 @@ export const Map = (): JSX.Element => {
   }
 
   const activeButtonRef = React.useRef(null)
-
   React.useEffect(() => {
     scrollToActiveButton(activeButtonRef)
   }, [showCurrentButton])
@@ -75,81 +83,101 @@ export const Map = (): JSX.Element => {
       width="98%"
       height="42rem"
       backgroundColor="grey"
-      padding="1.5rem"
+      padding="1rem 1.5rem"
       boxShadow="0px 3px 6px rgba(0, 0, 0, 0.23)"
-      flexDirection="row"
-      alignItems="center"
+      flexDirection="column"
     >
-      <Flex width="50%" flexDirection="column">
+      <Flex flexDirection="column">
         <Flex
           fontSize="2.5rem"
           textAlign="center"
           justifyContent="center"
-          marginBottom="1rem"
+          marginBottom="0.5rem"
         >
-          New York City Locations
+          {isGlobalRestaurantList
+            ? 'Global Locations'
+            : 'New York City Locations'}
         </Flex>
-        <Flex flexDirection="row" justifyContent="space-between">
-          <Flex
-            flexDirection="column"
-            maxHeight="38rem"
-            overflow="scroll"
-            width="max-content"
-            backgroundColor="white"
-            borderRadius="10px"
-          >
-            {data.map((res, index) => (
-              <Flex
-                borderBottom="2px solid grey"
-                ref={showCurrentButton === index ? activeButtonRef : null}
-                className="Map-buttons"
-                padding="0.5rem"
-                key={res.name}
-                onClick={() => handleClick(index)}
-                backgroundColor={showCurrentButton === index ? 'pink' : 'white'}
-              >
-                {res.name}
-              </Flex>
-            ))}
-          </Flex>
-          <Flex flexDirection="row">
-            <FilterMenu onClick={handleFilterClick} />
+        <Flex
+          flexDirection="row"
+          paddingBottom="0.5rem"
+          justifyContent="space-between"
+        >
+          <Flex paddingLeft="1rem">Restuarants</Flex>
+          <Flex flexDirection="row" alignItems="center">
+            <Toggle onChange={handleToggle} />
+            <FilterMenu
+              onClick={handleFilterClick}
+              sortedLocations={sortedLocations}
+            />
             <SortBy onClick={handleSortByClick} />
           </Flex>
         </Flex>
       </Flex>
-      <MapContainer
-        center={centerPoint}
-        zoom={12}
-        style={{
-          height: '35rem',
-          width: '50%',
-          borderRadius: '10px',
-          boxShadow: '0px 3px 6px rgba(0, 0, 0, 0.23)',
-        }}
-        ref={mapRef}
-      >
-        <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
-        {data.map((res, index) => (
-          <div className="leaflet-clickable" key={res.name}>
-            <Marker
-              position={res.coordinate}
-              icon={DefaultIcon}
-              eventHandlers={{ click: () => setCurrentButton(index) }}
-              ref={restaurantRefs[index]}
+      <Flex>
+        <Flex width="30%" flexDirection="column">
+          <Flex flexDirection="row" justifyContent="space-between">
+            <Flex
+              flexDirection="column"
+              maxHeight="35rem"
+              overflow="scroll"
+              width="90%"
+              backgroundColor="white"
+              borderRadius="10px"
+              boxShadow="0px 3px 6px rgba(0, 0, 0, 0.23)"
             >
-              <StyledPopup
-                //  TODO: the exit button on the Popup should also set CurrentButton to null
-                //    but it doesn't work to have it as below
-                // eventHandlers={{ click: () => setCurrentButton(null) }}
-                closeButton
+              {data.map((res, index) => (
+                <Flex
+                  borderBottom="2px solid grey"
+                  ref={showCurrentButton === index ? activeButtonRef : null}
+                  className="Map-buttons"
+                  padding="0.5rem"
+                  key={res.name}
+                  onClick={() => handleClick(index)}
+                  backgroundColor={
+                    showCurrentButton === index ? 'pink' : 'white'
+                  }
+                >
+                  {res.name}
+                </Flex>
+              ))}
+            </Flex>
+          </Flex>
+        </Flex>
+        <MapContainer
+          key={key}
+          center={centerPoint}
+          zoom={isGlobalRestaurantList ? 3 : 12}
+          style={{
+            height: '35rem',
+            width: '70%',
+            borderRadius: '10px',
+            boxShadow: '0px 3px 6px rgba(0, 0, 0, 0.23)',
+          }}
+          ref={mapRef}
+        >
+          <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
+          {data.map((res, index) => (
+            <div className="leaflet-clickable" key={res.name}>
+              <Marker
+                position={res.coordinate}
+                icon={DefaultIcon}
+                eventHandlers={{ click: () => setCurrentButton(index) }}
+                ref={restaurantRefs[index]}
               >
-                <PopupInformation restuarantData={res} />
-              </StyledPopup>
-            </Marker>
-          </div>
-        ))}
-      </MapContainer>
+                <StyledPopup
+                  //  TODO: the exit button on the Popup should also set CurrentButton to null
+                  //    but it doesn't work to have it as below
+                  // eventHandlers={{ click: () => setCurrentButton(null) }}
+                  closeButton
+                >
+                  <PopupInformation restuarantData={res} />
+                </StyledPopup>
+              </Marker>
+            </div>
+          ))}
+        </MapContainer>
+      </Flex>
     </Flex>
   )
 }

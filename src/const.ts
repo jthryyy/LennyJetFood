@@ -1,6 +1,8 @@
 //  a list of the constants used throughout the project, organized in a const file
 
-export const FOOD_TYPES: string[] = [
+import { FilterType, FoodType } from './types'
+
+export const FOOD_TYPES: FoodType[] = [
   'american',
   'bagel',
   'bar',
@@ -28,6 +30,12 @@ export const FOOD_TYPES: string[] = [
   'taqueria',
   'ukrainian',
   'vietnamese',
+  'spanish',
+  'mediterranean',
+  'portuguese',
+  'lounge',
+  'afro-portuguese',
+  'english',
 ]
 
 export const NEIGHBORHOODS: string[] = [
@@ -70,4 +78,12 @@ export const SUBCATEGORY: string[] = [
   'jazz',
   'vegan',
   'dog friendly',
+  'pub',
+]
+
+export const FILTER_TYPE: FilterType[] = [
+  'advanced',
+  'type',
+  'rating',
+  'neighborhood',
 ]

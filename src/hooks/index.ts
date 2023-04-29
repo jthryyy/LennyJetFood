@@ -1,3 +1,5 @@
 export * from './useRestaurantData'
 export * from './useTranslateOnScroll'
 export * from './useRestaurantGlobalData'
+export * from './useSortedLocations'
+export * from './useOnClickOutside'

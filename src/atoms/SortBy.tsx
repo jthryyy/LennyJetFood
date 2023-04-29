@@ -1,4 +1,5 @@
 import * as React from 'react'
+import { useOnClickOutside } from '../hooks'
 import { ChevronDownIcon, ChevronUpIcon } from '../icons'
 import { Flex } from '../utils/Flex'
 import './atoms.css'
@@ -15,6 +16,10 @@ export const SortBy = (props: SortByProps): JSX.Element => {
   const { onClick } = props
   const [showMenu, setShowMenu] = React.useState(false)
   const [showActive, setShowActive] = React.useState<string | null>(null)
+  const sortByRef = React.useRef(null)
+  useOnClickOutside(sortByRef, () => {
+    setShowMenu(false)
+  })
 
   const handleOnClick = (sortOption: {
     label: string
@@ -27,14 +32,19 @@ export const SortBy = (props: SortByProps): JSX.Element => {
 
   const menuContent = showMenu && (
     <Flex
+      ref={sortByRef}
       flexDirection="column"
       cursor="pointer"
       position="absolute"
-      top="7rem"
-      right="51%"
+      top="6.38rem"
+      right="3%"
+      zIndex={500}
+      border="1px solid gray"
+      boxShadow="0px 3px 6px rgba(0, 0, 0, 0.23)"
     >
       {sortOptions.map(option => (
         <Flex
+          padding="0.5rem"
           key={option.value}
           className={
             showActive === option.value

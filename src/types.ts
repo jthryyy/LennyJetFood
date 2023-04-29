@@ -84,25 +84,15 @@ export type RestaurantData = {
   type: FoodType
   rating: Rating
   price: number
-  neighborhood: Neighborhood
+  neighborhood?: Neighborhood
+  location?: { state: string; country: string }
   firstVisit: number
   link?: string
   permanantlyClosed?: boolean
   subcategory?: Subcategory
 }
 
-export type RestaurantDataWithId = {
-  name: string
-  coordinate: [number, number]
-  description: string
-  type: FoodType
-  rating: Rating
-  price: number
-  neighborhood: Neighborhood
-  firstVisit: number
-  link?: string
-  permanantlyClosed?: boolean
-  subcategory?: Subcategory
+export type RestaurantDataWithId = RestaurantData & {
   id: string
 }
 
@@ -119,4 +109,10 @@ export interface GenericProps {
   onClick: () => void
 }
 
-export type FilterType = 'type' | 'neighborhood' | 'rating' | 'advanced'
+export type FilterType =
+  | 'type'
+  | 'neighborhood'
+  | 'rating'
+  | 'advanced'
+  | 'all'
+  | 'location'

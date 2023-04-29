@@ -1,7 +1,7 @@
 import * as React from 'react'
 import { v4 as uuidv4 } from 'uuid'
 import { Flex } from './Flex'
-import { StarIcon } from '../icons/starIcon'
+import { StarIcon } from '../icons'
 import type {
   Data,
   Filter,
