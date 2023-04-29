@@ -177,7 +177,13 @@ export const getPrice = (price: number): JSX.Element => {
     }
   }
   return (
-    <Flex flexDirection="row" gridGap="4px" color="green">
+    <Flex
+      flexDirection="row"
+      gridGap="4px"
+      color="green"
+      fontWeight={500}
+      fontSize="14px"
+    >
       {prices}
     </Flex>
   )

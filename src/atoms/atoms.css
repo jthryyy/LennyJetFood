@@ -19,3 +19,10 @@
 .Active-filter-buttons:hover {
   color: grey;
 }
+
+.Name-link {
+  text-decoration: none;
+  color: black;
+  cursor: pointer;
+  font-weight: 500;
+}

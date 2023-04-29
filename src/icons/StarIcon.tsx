@@ -15,7 +15,7 @@ export const StarIcon = (props: StarProps): JSX.Element => {
         height="16"
         viewBox="0 0 24 24"
         fill={color}
-        stroke="#c41818"
+        stroke="black"
         strokeWidth="1.5"
         strokeLinecap="butt"
         strokeLinejoin="bevel"

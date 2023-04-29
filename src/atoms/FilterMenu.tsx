@@ -146,13 +146,12 @@ export const FilterMenu = (props: FilterMenuProps): JSX.Element => {
         >
           <Flex
             backgroundColor="white"
-            border="1px solid black"
             width="100%"
             height="max-content"
             flexDirection="column"
-            gridGap="0.5rem"
           >
             <Flex
+              padding="0.5rem"
               onClick={handleClear}
               className={`${
                 showSetting === 'all'
@@ -164,6 +163,7 @@ export const FilterMenu = (props: FilterMenuProps): JSX.Element => {
             </Flex>
             {FILTER_TYPE.map(setting => (
               <Flex
+                padding="0.5rem"
                 key={setting}
                 className={`${
                   showSetting === setting
@@ -185,6 +185,7 @@ export const FilterMenu = (props: FilterMenuProps): JSX.Element => {
           </Flex>
           {showSubcategory && (
             <Flex
+              padding="0.5rem"
               flexDirection="column"
               backgroundColor="white"
               width="max-content"
