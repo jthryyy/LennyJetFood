@@ -2,6 +2,21 @@ import L from 'leaflet'
 
 //  the type file for all the types used in the project
 
+export type Location =
+  | 'Jersey City'
+  | 'Elizabeth'
+  | 'Freehold'
+  | 'Princeton'
+  | 'Hopewell'
+  | 'Palisade'
+  | 'Grand Junction'
+  | 'Salt Lake City'
+  | 'Seattle'
+  | 'Laguna Beach'
+  | 'Orange'
+  | 'Anaheim'
+  | 'London'
+
 export type FoodType =
   | 'southern comfort'
   | 'pizza'
@@ -75,7 +90,12 @@ export type Subcategory =
   | 'dog friendly'
   | 'pub'
 
-export type Filter = FoodType | Neighborhood | Rating | 'permanantelyClosed'
+export type Filter =
+  | FoodType
+  | Neighborhood
+  | Rating
+  | 'permanantelyClosed'
+  | Location
 
 export type RestaurantData = {
   name: string
@@ -85,7 +105,7 @@ export type RestaurantData = {
   rating: Rating
   price: number
   neighborhood?: Neighborhood
-  location?: { state: string; country: string }
+  location?: { city: string; state?: string; country: string }
   firstVisit: number
   link?: string
   permanantlyClosed?: boolean

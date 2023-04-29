@@ -82,18 +82,13 @@ export const Map = (): JSX.Element => {
       zIndex={10}
       width="98%"
       height="42rem"
-      backgroundColor="grey"
+      backgroundColor="lightgray"
       padding="1rem 1.5rem"
       boxShadow="0px 3px 6px rgba(0, 0, 0, 0.23)"
       flexDirection="column"
     >
       <Flex flexDirection="column">
-        <Flex
-          fontSize="2.5rem"
-          textAlign="center"
-          justifyContent="center"
-          marginBottom="0.5rem"
-        >
+        <Flex fontSize="2.5rem" textAlign="center" justifyContent="center">
           {isGlobalRestaurantList
             ? 'Global Locations'
             : 'New York City Locations'}
@@ -128,7 +123,7 @@ export const Map = (): JSX.Element => {
             >
               {data.map((res, index) => (
                 <Flex
-                  borderBottom="2px solid grey"
+                  borderBottom="2px solid lightgray"
                   ref={showCurrentButton === index ? activeButtonRef : null}
                   className="Map-buttons"
                   padding="0.5rem"

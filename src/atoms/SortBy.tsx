@@ -36,7 +36,7 @@ export const SortBy = (props: SortByProps): JSX.Element => {
       flexDirection="column"
       cursor="pointer"
       position="absolute"
-      top="6.38rem"
+      top="5.8rem"
       right="3%"
       zIndex={500}
       border="1px solid gray"

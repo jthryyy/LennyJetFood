@@ -1,6 +1,6 @@
 //  a list of the constants used throughout the project, organized in a const file
 
-import { FilterType, FoodType } from './types'
+import { FilterType, FoodType, Location } from './types'
 
 export const FOOD_TYPES: FoodType[] = [
   'american',
@@ -83,7 +83,38 @@ export const SUBCATEGORY: string[] = [
 
 export const FILTER_TYPE: FilterType[] = [
   'advanced',
-  'type',
   'neighborhood',
   'rating',
+  'type',
 ]
+
+export const FILTER_TYPE_GLOBAL: FilterType[] = [
+  'advanced',
+  'location',
+  'rating',
+  'type',
+]
+
+export const CITY_LOCATIONS: Location[] = [
+  'Jersey City',
+  'Elizabeth',
+  'Freehold',
+  'Princeton',
+  'Hopewell',
+  'Palisade',
+  'Grand Junction',
+  'Salt Lake City',
+  'Seattle',
+  'Laguna Beach',
+  'Orange',
+  'Anaheim',
+  'London',
+]
+
+//  colors
+export const black = '#323031'
+export const teaGreen = '#DCE6AC'
+export const ashGray = '#B5D8CC'
+export const dutchWhite = '#E8DDB5'
+export const silver = '#C1B9B9'
+export const thistle = '#D3C0DB'

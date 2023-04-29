@@ -27,7 +27,7 @@ const ToggleSlider = styled.span`
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: #ccc;
+  background-color: gray;
   border-radius: 12px;
   transition: 0.3s;
 

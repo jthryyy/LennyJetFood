@@ -4,7 +4,9 @@ import { Flex } from '../utils/Flex'
 import { ChevronDownIcon, ChevronUpIcon } from '../icons'
 import {
   ADVANCED,
+  CITY_LOCATIONS,
   FILTER_TYPE,
+  FILTER_TYPE_GLOBAL,
   FOOD_TYPES,
   NEIGHBORHOODS,
   RATING,
@@ -49,6 +51,11 @@ export const FilterMenu = (props: FilterMenuProps): JSX.Element => {
   const filteredRatings = RATING.filter(rate =>
     sortedLocations.some(restaurant => restaurant.rating === rate)
   )
+  //  I really want to use 'neighborhood' in sortedLocations but that doesn't work for some reason?
+  const hasNeighborhoodKey = sortedLocations.find(
+    restaurant => restaurant.neighborhood
+  )
+  const filter = hasNeighborhoodKey != null ? FILTER_TYPE : FILTER_TYPE_GLOBAL
 
   let options
   switch (showSetting) {
@@ -67,16 +74,32 @@ export const FilterMenu = (props: FilterMenuProps): JSX.Element => {
     }
     case 'neighborhood': {
       options =
-        // 'neighborhood' in sortedLocations
-        NEIGHBORHOODS.map(place => (
-          <Flex
-            onClick={() => handleFoodSettingClick(place as Filter)}
-            key={place}
-            className="Filter-buttons"
-          >
-            {startCase(place)}
-          </Flex>
-        ))
+        hasNeighborhoodKey != null
+          ? NEIGHBORHOODS.map(place => (
+              <Flex
+                onClick={() => handleFoodSettingClick(place as Filter)}
+                key={place}
+                className="Filter-buttons"
+              >
+                {startCase(place)}
+              </Flex>
+            ))
+          : null
+      break
+    }
+    case 'location': {
+      options =
+        hasNeighborhoodKey == null
+          ? CITY_LOCATIONS.map(location => (
+              <Flex
+                onClick={() => handleFoodSettingClick(location as Filter)}
+                key={location}
+                className="Filter-buttons"
+              >
+                {startCase(location)}
+              </Flex>
+            ))
+          : null
       break
     }
     case 'rating': {
@@ -137,8 +160,8 @@ export const FilterMenu = (props: FilterMenuProps): JSX.Element => {
           ref={filterRef}
           flexDirection="row"
           cursor="pointer"
+          top="5.8rem"
           position="absolute"
-          top="6.38rem"
           right="9%"
           zIndex={500}
           border="1px solid gray"
@@ -161,7 +184,7 @@ export const FilterMenu = (props: FilterMenuProps): JSX.Element => {
             >
               All
             </Flex>
-            {FILTER_TYPE.map(setting => (
+            {filter.map(setting => (
               <Flex
                 padding="0.5rem"
                 key={setting}

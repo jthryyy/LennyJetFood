@@ -28,7 +28,6 @@ export const PopupInformation = (props: PopupInformationProps): JSX.Element => {
   const tagProps = {
     marginLeft: '4px',
     padding: '6px',
-    color: 'white',
     borderRadius: '15px',
     minWidth: '5rem',
     maxWidth: 'max-content',
@@ -36,13 +35,13 @@ export const PopupInformation = (props: PopupInformationProps): JSX.Element => {
     fontSize: '12px',
   }
   const styledType = (
-    <Flex {...tagProps} backgroundColor="purple">
+    <Flex {...tagProps} backgroundColor="#A0C891" color="black">
       {startCase(type)}
     </Flex>
   )
   const styledSub =
     subcategory != null ? (
-      <Flex {...tagProps} backgroundColor="blue">
+      <Flex {...tagProps} backgroundColor="pink" color="black">
         {startCase(subcategory)}
       </Flex>
     ) : null

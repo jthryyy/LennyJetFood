@@ -8,7 +8,11 @@
       "link": "https://barcade.com/jerseycity/",
       "rating": 3,
       "price": 2,
-      "location": { "state": "New Jersey", "country": "USA" },
+      "location": {
+        "city": "Jersey City",
+        "state": "New Jersey",
+        "country": "USA"
+      },
       "firstVisit": "2022"
     },
     {
@@ -20,7 +24,11 @@
       "link": "http://www.ramenmiso.com/",
       "rating": 3,
       "price": 2,
-      "location": { "state": "New Jersey", "country": "USA" },
+      "location": {
+        "city": "Jersey City",
+        "state": "New Jersey",
+        "country": "USA"
+      },
       "firstVisit": "2022"
     },
     {
@@ -31,7 +39,11 @@
       "link": "http://valencarestaurantnj.com/",
       "rating": 3,
       "price": 2,
-      "location": { "state": "New Jersey", "country": "USA" },
+      "location": {
+        "city": "Elizabeth",
+        "state": "New Jersey",
+        "country": "USA"
+      },
       "firstVisit": "2021"
     },
     {
@@ -42,7 +54,11 @@
       "link": "https://stores.perkinsrestaurants.com/us/nj/freehold/3445-route-9.html",
       "rating": 1,
       "price": 2,
-      "location": { "state": "New Jersey", "country": "USA" },
+      "location": {
+        "city": "Freehold",
+        "state": "New Jersey",
+        "country": "USA"
+      },
       "firstVisit": "2019",
       "permanentlyClosed": true
     },
@@ -54,7 +70,11 @@
       "link": "http://www.crossculturerestaurant.com/",
       "rating": 3,
       "price": 2,
-      "location": { "state": "New Jersey", "country": "USA" },
+      "location": {
+        "city": "Princeton",
+        "state": "New Jersey",
+        "country": "USA"
+      },
       "firstVisit": "2018"
     },
     {
@@ -65,7 +85,11 @@
       "link": "http://www.nomadpizzaco.com/",
       "rating": 2,
       "price": 2,
-      "location": { "state": "New Jersey", "country": "USA" },
+      "location": {
+        "city": "Hopewell",
+        "state": "New Jersey",
+        "country": "USA"
+      },
       "firstVisit": "2019"
     },
     {
@@ -76,7 +100,11 @@
       "subcategory": "brunch",
       "rating": 3,
       "price": 2,
-      "location": { "state": "New Jersey", "country": "USA" },
+      "location": {
+        "city": "Hopewell",
+        "state": "New Jersey",
+        "country": "USA"
+      },
       "firstVisit": "2019"
     },
     {
@@ -86,7 +114,7 @@
       "type": "distillery",
       "rating": 4,
       "price": 2,
-      "location": { "state": "Colorado", "country": "USA" },
+      "location": { "city": "Palisade", "state": "Colorado", "country": "USA" },
       "firstVisit": "2022"
     },
     {
@@ -96,7 +124,11 @@
       "type": "bar grill",
       "rating": 2,
       "price": 2,
-      "location": { "state": "Colorado", "country": "USA" },
+      "location": {
+        "city": "Grand Junction",
+        "state": "Colorado",
+        "country": "USA"
+      },
       "firstVisit": "2019"
     },
     {
@@ -107,7 +139,11 @@
       "rating": 1,
       "link": "http://gjmainstreetbagels.com/",
       "price": 1,
-      "location": { "state": "Colorado", "country": "USA" },
+      "location": {
+        "city": "Grand Junction",
+        "state": "Colorado",
+        "country": "USA"
+      },
       "firstVisit": "2019"
     },
     {
@@ -118,7 +154,11 @@
       "rating": 4,
       "link": "http://gjmainstreetbagels.com/",
       "price": 2,
-      "location": { "state": "Utah", "country": "USA" },
+      "location": {
+        "city": "Salt Lake City",
+        "state": "Utah",
+        "country": "USA"
+      },
       "firstVisit": "2023"
     },
     {
@@ -128,7 +168,11 @@
       "type": "lounge",
       "rating": 3,
       "price": 2,
-      "location": { "state": "Washington", "country": "USA" },
+      "location": {
+        "city": "Seattle",
+        "state": "Washington",
+        "country": "USA"
+      },
       "firstVisit": "2023"
     },
     {
@@ -138,7 +182,11 @@
       "type": "cocktail bar",
       "rating": 3,
       "price": 2,
-      "location": { "state": "California", "country": "USA" },
+      "location": {
+        "city": "Laguna Beach",
+        "state": "California",
+        "country": "USA"
+      },
       "firstVisit": "2023"
     },
     {
@@ -148,7 +196,7 @@
       "type": "mexican",
       "rating": 3,
       "price": 2,
-      "location": { "state": "California", "country": "USA" },
+      "location": { "city": "Orange", "state": "California", "country": "USA" },
       "firstVisit": "2023"
     },
     {
@@ -159,7 +207,11 @@
       "subcategory": "kbbq",
       "rating": 3,
       "price": 2,
-      "location": { "state": "California", "country": "USA" },
+      "location": {
+        "city": "Anaheim",
+        "state": "California",
+        "country": "USA"
+      },
       "firstVisit": "2023"
     },
     {
@@ -169,7 +221,7 @@
       "type": "pizza",
       "rating": 3,
       "price": 2,
-      "location": { "state": "England", "country": "United Kingdom" },
+      "location": { "city": "London", "country": "England" },
       "firstVisit": "2022"
     },
     {
@@ -179,7 +231,7 @@
       "type": "afro-portuguese",
       "rating": 4,
       "price": 1,
-      "location": { "state": "England", "country": "United Kingdom" },
+      "location": { "city": "London", "country": "England" },
       "firstVisit": "2022"
     },
     {
@@ -189,7 +241,7 @@
       "type": "mediterranean",
       "rating": 3,
       "price": 2,
-      "location": { "state": "England", "country": "United Kingdom" },
+      "location": { "city": "London", "country": "England" },
       "firstVisit": "2022"
     },
     {
@@ -200,7 +252,7 @@
       "subcategory": "marketplace",
       "rating": 4,
       "price": 2,
-      "location": { "state": "England", "country": "United Kingdom" },
+      "location": { "city": "London", "country": "England" },
       "firstVisit": "2022"
     },
     {
@@ -210,7 +262,7 @@
       "type": "bar",
       "rating": 3,
       "price": 2,
-      "location": { "state": "England", "country": "United Kingdom" },
+      "location": { "city": "London", "country": "England" },
       "firstVisit": "2022"
     },
     {
@@ -220,7 +272,7 @@
       "type": "chinese",
       "rating": 4,
       "price": 2,
-      "location": { "state": "England", "country": "United Kingdom" },
+      "location": { "city": "London", "country": "England" },
       "firstVisit": "2022"
     },
     {
@@ -230,7 +282,7 @@
       "type": "chinese",
       "rating": 4,
       "price": 2,
-      "location": { "state": "England", "country": "United Kingdom" },
+      "location": { "city": "London", "country": "England" },
       "firstVisit": "2022"
     },
     {
@@ -242,7 +294,7 @@
       "rating": 3,
       "price": 2,
       "link": "https://www.nicholsonspubs.co.uk/restaurants/london/theclarencemayfairlondon?utm_source=google&utm_medium=organic&utm_campaign=gmb",
-      "location": { "state": "England", "country": "United Kingdom" },
+      "location": { "city": "London", "country": "England" },
       "firstVisit": "2022"
     },
     {
@@ -252,7 +304,7 @@
       "type": "english",
       "rating": 3,
       "price": 2,
-      "location": { "state": "England", "country": "United Kingdom" },
+      "location": { "city": "London", "country": "England" },
       "firstVisit": "2022"
     }
   ]

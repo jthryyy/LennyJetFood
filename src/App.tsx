@@ -3,7 +3,8 @@ import { Routes, Route, BrowserRouter } from 'react-router-dom'
 import { Flex } from './utils/Flex'
 import { useTranslateOnScroll } from './hooks'
 import { About, Footer, Map, NavigationBar } from './components'
-import homeImage from './images/homeImage.jpeg'
+// import homeImage from './images/homeImage.jpeg'
+import backgroundImage from './images/backgroundImage.jpeg'
 
 function App() {
   const elementRef = useTranslateOnScroll()
@@ -11,7 +12,7 @@ function App() {
   return (
     <BrowserRouter>
       <div style={{ margin: '-8px' }}>
-        <img src={homeImage} width="100%" />
+        <img src={backgroundImage} width="100%" />
         <a href="#about" style={{ textDecoration: 'none' }}>
           <About />
         </a>
