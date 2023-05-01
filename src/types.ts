@@ -16,6 +16,8 @@ export type Location =
   | 'Orange'
   | 'Anaheim'
   | 'London'
+  | 'Boston'
+  | 'Cambridge'
 
 export type FoodType =
   | 'southern comfort'
@@ -49,6 +51,7 @@ export type FoodType =
   | 'lounge'
   | 'afro-portuguese'
   | 'english'
+  | 'singaporean'
 
 export type Neighborhood =
   | 'Harlem'
@@ -75,6 +78,7 @@ export type Neighborhood =
   | 'Prospect Heights'
   | 'Downtown Brooklyn'
   | 'DUMBO'
+  | 'Washington Heights'
 
 export type Rating = 1 | 1.5 | 2 | 2.5 | 3 | 3.5 | 4 | 4.5 | 5
 
@@ -136,3 +140,15 @@ export type FilterType =
   | 'advanced'
   | 'all'
   | 'location'
+
+export type Subcategories =
+  | 'brunch'
+  | 'dog friendly'
+  | 'jazz'
+  | 'kareoke'
+  | 'kbbq'
+  | 'marketplace'
+  | 'pub'
+  | 'ramen'
+  | 'sushi'
+  | 'vegan'

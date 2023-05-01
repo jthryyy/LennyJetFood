@@ -306,6 +306,49 @@
       "price": 2,
       "location": { "city": "London", "country": "England" },
       "firstVisit": "2022"
+    },
+    {
+      "name": "Off the Commons",
+      "coordinate": [42.35141758171614, -71.06981296091674],
+      "description": "We ordered food for take out at the Boston Plaza hotel a few times and it was alright. Nothing really phenomanal though.",
+      "type": "american",
+      "rating": 2,
+      "price": 2,
+      "location": {
+        "city": "Boston",
+        "state": "Massachusetts",
+        "country": "USA"
+      },
+      "firstVisit": "2021"
+    },
+    {
+      "name": "Thinking Cup",
+      "coordinate": [42.35461583968398, -71.0637462054239],
+      "description": "The coffee was good but their pastries were pretty tasty. A nice morning snack.",
+      "type": "coffee",
+      "rating": 3.5,
+      "price": 2,
+      "location": {
+        "city": "Boston",
+        "state": "Massachusetts",
+        "country": "USA"
+      },
+      "firstVisit": "2021"
+    },
+    {
+      "name": "Cambridge Brewing Company",
+      "coordinate": [42.36959132052106, -71.08922404327782],
+      "description": "Nice outdoor area. Their pizza was not bad. They also have an onsite brewery which we didn't go into.",
+      "type": "bar grill",
+      "subcategory": "dog friendly",
+      "rating": 3,
+      "price": 2,
+      "location": {
+        "city": "Cambridge",
+        "state": "Massachusetts",
+        "country": "USA"
+      },
+      "firstVisit": "2021"
     }
   ]
 }

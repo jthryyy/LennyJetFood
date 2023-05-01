@@ -46,6 +46,14 @@ export const PopupInformation = (props: PopupInformationProps): JSX.Element => {
       </Flex>
     ) : null
 
+  let locationInfo
+  if (location != null) {
+    if (location.state != null) {
+      locationInfo = location.city + ', ' + location.state
+    } else {
+      locationInfo = location.city + ', ' + location.country
+    }
+  }
   return (
     <Flex flexDirection="column" gridGap="4px" key={id}>
       <Flex fontWeight={500} flexDirection="row" justifyContent="space-between">
@@ -71,9 +79,7 @@ export const PopupInformation = (props: PopupInformationProps): JSX.Element => {
       <Flex flexDirection="row" justifyContent="space-between">
         <Flex flexDirection="row">
           <LocationIcon />
-          {location != null
-            ? location.state + ', ' + location.country
-            : neighborhood}
+          {locationInfo ?? neighborhood}
         </Flex>
         <Flex>First visited: {firstVisit}</Flex>
       </Flex>

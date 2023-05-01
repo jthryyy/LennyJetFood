@@ -13,10 +13,10 @@ export const About = (): JSX.Element => {
       color="black"
     >
       <Flex borderBottom="3px solid grey" width="4rem" />
-      <Flex fontSize="3rem" marginY="1.5rem">
+      <Flex fontSize="2rem" marginY="1.5rem">
         About
       </Flex>
-      <Flex fontSize="2rem">
+      <Flex fontSize="1rem">
         {"Lenny and Jet love food. But it wasn't always that way."}
       </Flex>
     </Flex>

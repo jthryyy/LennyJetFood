@@ -14,16 +14,27 @@ import {
 } from '../const'
 import { useOnClickOutside } from '../hooks'
 import './atoms.css'
-import type { Filter, FilterType, RestaurantDataWithId } from '../types'
+import type {
+  Filter,
+  FilterType,
+  RestaurantDataWithId,
+  Subcategories,
+} from '../types'
 
 interface FilterMenuProps {
   onClick: (filter: Filter | null) => void
   sortedLocations: RestaurantDataWithId[]
+  onSubcategoryClick: (Sub: Subcategories | null) => void
 }
 
 export const FilterMenu = (props: FilterMenuProps): JSX.Element => {
-  const { onClick, sortedLocations } = props
+  const { onClick, sortedLocations, onSubcategoryClick } = props
   const [showSetting, setSetting] = React.useState<FilterType>('all')
+  const [showSubSetting, setShowSubSetting] = React.useState<Filter | null>(
+    null
+  )
+  const [showMoreSubSetting, setShowMoreSubSetting] =
+    React.useState<Subcategories | null>(null)
   const [showMenu, setShowMenu] = React.useState<boolean>(false)
   const [showSubcategory, setShowSubcategory] = React.useState<boolean>(false)
   const filterRef = React.useRef(null)
@@ -35,12 +46,20 @@ export const FilterMenu = (props: FilterMenuProps): JSX.Element => {
   }
   const handleFoodSettingClick = (type: Filter): void => {
     onClick(type)
+    setShowSubSetting(type)
     setShowSubcategory(false)
+    setShowMenu(false)
   }
   const handleClear = (): void => {
     onClick(null)
     handleSettingClick('all')
     setShowSubcategory(false)
+    setShowSubSetting(null)
+    setShowMenu(false)
+  }
+  const handleSubcategoryClick = (sub: Subcategories): void => {
+    setShowMoreSubSetting(sub)
+    onSubcategoryClick(sub)
   }
   const filteredFoodTypes = FOOD_TYPES.filter(type =>
     sortedLocations.some(restaurant => restaurant.type === type)
@@ -64,7 +83,10 @@ export const FilterMenu = (props: FilterMenuProps): JSX.Element => {
         <Flex
           onClick={() => handleFoodSettingClick(type as Filter)}
           key={type}
-          className="Filter-buttons"
+          padding="0.5rem"
+          className={`${
+            showSubSetting === type ? 'Active-filter-buttons' : 'Filter-buttons'
+          }`}
           flexDirection="column"
         >
           {startCase(type)}
@@ -79,7 +101,12 @@ export const FilterMenu = (props: FilterMenuProps): JSX.Element => {
               <Flex
                 onClick={() => handleFoodSettingClick(place as Filter)}
                 key={place}
-                className="Filter-buttons"
+                padding="0.5rem"
+                className={`${
+                  showSubSetting === place
+                    ? 'Active-filter-buttons'
+                    : 'Filter-buttons'
+                }`}
               >
                 {startCase(place)}
               </Flex>
@@ -94,7 +121,12 @@ export const FilterMenu = (props: FilterMenuProps): JSX.Element => {
               <Flex
                 onClick={() => handleFoodSettingClick(location as Filter)}
                 key={location}
-                className="Filter-buttons"
+                padding="0.5rem"
+                className={`${
+                  showSubSetting === location
+                    ? 'Active-filter-buttons'
+                    : 'Filter-buttons'
+                }`}
               >
                 {startCase(location)}
               </Flex>
@@ -107,8 +139,11 @@ export const FilterMenu = (props: FilterMenuProps): JSX.Element => {
         <Flex
           onClick={() => handleFoodSettingClick(rate as Filter)}
           key={rate}
+          padding="0.5rem"
           flexDirection="row"
-          className="Filter-buttons"
+          className={`${
+            showSubSetting === rate ? 'Active-filter-buttons' : 'Filter-buttons'
+          }`}
         >
           {rate} Rating
         </Flex>
@@ -124,8 +159,11 @@ export const FilterMenu = (props: FilterMenuProps): JSX.Element => {
               : setShowSubcategory(true)
           }
           key={ad}
+          padding="0.5rem"
           flexDirection="row"
-          className="Filter-buttons"
+          className={`${
+            showSubSetting === ad ? 'Active-filter-buttons' : 'Filter-buttons'
+          }`}
         >
           {ad === 'permanantelyClosed' ? 'Permanently Closed' : 'Subcategory'}
         </Flex>
@@ -136,12 +174,15 @@ export const FilterMenu = (props: FilterMenuProps): JSX.Element => {
 
   const subCategoryOptions = filteredSubcategories.map(item => (
     <Flex
-      onClick={() => console.log('wire this up')}
+      onClick={() => handleSubcategoryClick(item as Subcategories)}
       key={item}
+      padding="0.5rem"
       flexDirection="row"
-      className="Filter-buttons"
+      className={`${
+        showMoreSubSetting === item ? 'Active-filter-buttons' : 'Filter-buttons'
+      }`}
     >
-      {item}
+      {startCase(item)}
     </Flex>
   ))
 
@@ -156,20 +197,16 @@ export const FilterMenu = (props: FilterMenuProps): JSX.Element => {
         )}
       </Flex>
       {showMenu && (
-        <Flex
-          ref={filterRef}
-          flexDirection="row"
-          cursor="pointer"
-          top="5.8rem"
-          position="absolute"
-          right="9%"
-          zIndex={500}
-          border="1px solid gray"
-          boxShadow="0px 3px 6px rgba(0, 0, 0, 0.23)"
-        >
+        <Flex flexDirection="row" ref={filterRef}>
           <Flex
+            cursor="pointer"
+            top="5.8rem"
+            position="absolute"
+            right="24%"
+            zIndex={500}
+            border="1px solid gray"
+            boxShadow="0px 3px 6px rgba(0, 0, 0, 0.23)"
             backgroundColor="white"
-            width="100%"
             height="max-content"
             flexDirection="column"
           >
@@ -197,22 +234,42 @@ export const FilterMenu = (props: FilterMenuProps): JSX.Element => {
                   handleSettingClick(showSetting === setting ? 'all' : setting)
                 }
               >
-                {setting === 'type'
-                  ? 'Food type'
-                  : setting.charAt(0).toUpperCase() + setting.slice(1)}
+                {setting === 'type' ? 'Food type' : startCase(setting)}
               </Flex>
             ))}
           </Flex>
-          <Flex flexDirection="column" backgroundColor="white">
-            {options}
-          </Flex>
+          {options == null ? null : (
+            <Flex
+              cursor="pointer"
+              top="5.8rem"
+              position="absolute"
+              right="11.5%"
+              zIndex={500}
+              border="1px solid gray"
+              boxShadow="0px 3px 6px rgba(0, 0, 0, 0.23)"
+              backgroundColor="white"
+              width="175px"
+              height="max-content"
+              maxHeight="34rem"
+              overflow="scroll"
+              flexDirection="column"
+            >
+              <Flex flexDirection="column">{options}</Flex>
+            </Flex>
+          )}
           {showSubcategory && (
             <Flex
-              padding="0.5rem"
               flexDirection="column"
               backgroundColor="white"
-              width="max-content"
+              width="107px"
               height="max-content"
+              cursor="pointer"
+              top="5.8rem"
+              right="2.7%"
+              position="absolute"
+              zIndex={500}
+              border="1px solid gray"
+              boxShadow="0px 3px 6px rgba(0, 0, 0, 0.23)"
             >
               {subCategoryOptions}
             </Flex>

@@ -5,6 +5,7 @@ import icon from 'leaflet/dist/images/marker-icon.png'
 
 import { Flex } from '../utils/Flex'
 import { scrollToActiveButton } from '../utils/ScrollToActiveButton'
+import { handleScroll } from '../utils/handleScroll'
 import { getFilterOptions, getRestaurantRefs } from '../utils/utils'
 import { useSortedLocations } from '../hooks'
 import {
@@ -16,11 +17,13 @@ import {
 } from '../atoms'
 import './components.css'
 
-import type { Filter } from '../types'
+import type { Filter, Subcategories } from '../types'
 
 export const Map = (): JSX.Element => {
   const [key, setKey] = React.useState(Date.now())
   const [showFilters, setFiltered] = React.useState<Filter | null>(null)
+  const [showSubcategory, setSubcategory] =
+    React.useState<Subcategories | null>(null)
   const [isYearOption, setShowYearSortByOption] = React.useState<boolean>(false)
   const [isGlobalRestaurantList, setShowGlobalRestaurantList] =
     React.useState<boolean>(false)
@@ -43,18 +46,19 @@ export const Map = (): JSX.Element => {
     setFiltered(filter)
     setCurrentButton(null)
   }
-  const handleSortByClick = (option: string | null): void => {
-    if (option == null) {
-      setShowYearSortByOption(false)
-    } else {
-      setShowYearSortByOption(true)
-    }
+  const handleSubcategoryClick = (sub: Subcategories | null): void => {
+    setSubcategory(sub)
+    setCurrentButton(null)
   }
   const sortedLocations = useSortedLocations({
     isGlobalRestaurantList,
     isYearOption,
   })
-  const filtered = getFilterOptions(showFilters, sortedLocations)
+  const filtered = getFilterOptions(
+    showFilters,
+    sortedLocations,
+    showSubcategory
+  )
   const data = filtered != null ? filtered : sortedLocations
   const restaurantRefs = getRestaurantRefs(data)
   const handleClick = (index: number) => {
@@ -71,11 +75,20 @@ export const Map = (): JSX.Element => {
       }
     }
   }
+  const handleSortByClick = (option: string | null): void => {
+    if (option == null) {
+      setShowYearSortByOption(false)
+    } else {
+      setShowYearSortByOption(true)
+    }
+  }
 
   const activeButtonRef = React.useRef(null)
   React.useEffect(() => {
     scrollToActiveButton(activeButtonRef)
   }, [showCurrentButton])
+
+  window.addEventListener('scroll', handleScroll)
 
   return (
     <Flex
@@ -100,11 +113,12 @@ export const Map = (): JSX.Element => {
         >
           <Flex paddingLeft="1rem">Restuarants</Flex>
           <Flex flexDirection="row" alignItems="center">
-            <Toggle onChange={handleToggle} />
             <FilterMenu
               onClick={handleFilterClick}
               sortedLocations={sortedLocations}
+              onSubcategoryClick={handleSubcategoryClick}
             />
+            <Toggle onChange={handleToggle} />
             <SortBy onClick={handleSortByClick} />
           </Flex>
         </Flex>
@@ -150,6 +164,7 @@ export const Map = (): JSX.Element => {
             boxShadow: '0px 3px 6px rgba(0, 0, 0, 0.23)',
           }}
           ref={mapRef}
+          closePopupOnClick={false}
         >
           <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
           {data.map((res, index) => (
@@ -163,8 +178,8 @@ export const Map = (): JSX.Element => {
                 <StyledPopup
                   //  TODO: the exit button on the Popup should also set CurrentButton to null
                   //    but it doesn't work to have it as below
-                  // eventHandlers={{ click: () => setCurrentButton(null) }}
-                  closeButton
+                  eventHandlers={{ click: () => setCurrentButton(null) }}
+                  closeButton={false}
                 >
                   <PopupInformation restuarantData={res} />
                 </StyledPopup>

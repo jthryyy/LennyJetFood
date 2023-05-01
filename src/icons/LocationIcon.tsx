@@ -9,7 +9,7 @@ export const LocationIcon = (): JSX.Element => {
         width="16"
         height="16"
         viewBox="0 0 24 24"
-        fill="red"
+        fill="pink"
         stroke="#000000"
         strokeWidth="1.5"
         strokeLinecap="butt"

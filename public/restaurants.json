@@ -1454,10 +1454,51 @@
       "description": "A chain. We always get their mini cheesecakes (we love the red velvet flavor) and the banana puding.",
       "type": "dessert",
       "rating": 4.5,
-      "price": 3,
+      "price": 2,
       "neighborhood": "UWS",
       "firstVisit": "2019",
       "link": "http://www.magnoliabakery.com/"
+    },
+    {
+      "name": "Mokja",
+      "coordinate": [40.797899188288525, -73.96788047526773],
+      "description": "They have a few locations. Their kimchi fried rice is the best and I think about it often.",
+      "type": "korean",
+      "rating": 4,
+      "price": 2,
+      "neighborhood": "UWS",
+      "firstVisit": "2020",
+      "link": "http://www.mokjanewyork.net/"
+    },
+    {
+      "name": "Native Noodles",
+      "coordinate": [40.838459861910266, -73.93788636177337],
+      "description": "They have a lot of noodle dishes. Their cold shrimp and ginger dish is always my go to. So flavorful and delicious.",
+      "type": "singaporean",
+      "rating": 4,
+      "price": 2,
+      "neighborhood": "Washington Heights",
+      "firstVisit": "2020"
+    },
+    {
+      "name": "Pipo's",
+      "coordinate": [40.800856526066276, -73.93905162898946],
+      "description": "Was craving Mexican food one day and this was nearby. I was pretty disappointed. The burrito I had was not very flavorful and the guac wasn't great.",
+      "type": "mexican",
+      "rating": 2,
+      "price": 2,
+      "neighborhood": "Harlem",
+      "firstVisit": "2021"
+    },
+    {
+      "name": "Tha Handpulled Noodle",
+      "coordinate": [40.8293373995781, -73.94815491721711],
+      "description": "Their noodles are long and great. They have several soup and stir fry options. We first ordered for a birthday to get long noodles but we order from here every few months.",
+      "type": "chinese",
+      "rating": 4,
+      "price": 2,
+      "neighborhood": "Washington Heights",
+      "firstVisit": "2022"
     }
   ]
 }

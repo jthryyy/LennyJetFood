@@ -3,6 +3,7 @@
 import { FilterType, FoodType, Location } from './types'
 
 export const FOOD_TYPES: FoodType[] = [
+  'afro-portuguese',
   'american',
   'bagel',
   'bar',
@@ -12,6 +13,7 @@ export const FOOD_TYPES: FoodType[] = [
   'cocktail bar',
   'coffee',
   'dessert',
+  'english',
   'filipino',
   'french',
   'german',
@@ -20,9 +22,12 @@ export const FOOD_TYPES: FoodType[] = [
   'japanese',
   'juice',
   'korean',
+  'lounge',
   'mediterranean',
   'mexican',
   'pizza',
+  'portuguese',
+  'singaporean',
   'southern comfort',
   'spanish',
   'thai',
@@ -30,12 +35,6 @@ export const FOOD_TYPES: FoodType[] = [
   'taqueria',
   'ukrainian',
   'vietnamese',
-  'spanish',
-  'mediterranean',
-  'portuguese',
-  'lounge',
-  'afro-portuguese',
-  'english',
 ]
 
 export const NEIGHBORHOODS: string[] = [
@@ -59,6 +58,7 @@ export const NEIGHBORHOODS: string[] = [
   'Prospect Heights',
   'UES',
   'UWS',
+  'Washington Heights',
   'Washington Square Park',
   'West Village',
   'Williamsburg',
@@ -96,19 +96,21 @@ export const FILTER_TYPE_GLOBAL: FilterType[] = [
 ]
 
 export const CITY_LOCATIONS: Location[] = [
-  'Jersey City',
+  'Anaheim',
+  'Boston',
+  'Cambridge',
   'Elizabeth',
   'Freehold',
-  'Princeton',
-  'Hopewell',
-  'Palisade',
   'Grand Junction',
+  'Hopewell',
+  'Jersey City',
+  'Laguna Beach',
+  'London',
+  'Orange',
+  'Palisade',
+  'Princeton',
   'Salt Lake City',
   'Seattle',
-  'Laguna Beach',
-  'Orange',
-  'Anaheim',
-  'London',
 ]
 
 //  colors

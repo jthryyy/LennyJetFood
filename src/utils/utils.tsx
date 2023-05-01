@@ -8,12 +8,14 @@ import type {
   MarkerWithPopup,
   Rating,
   RestaurantDataWithId,
+  Subcategories,
 } from '../types'
 
 //  get the filtered options to filter the restaurant info
 export const getFilterOptions = (
   filter: Filter | null,
-  restaurants: RestaurantDataWithId[]
+  restaurants: RestaurantDataWithId[],
+  subcategory: Subcategories | null
 ): RestaurantDataWithId[] => {
   if (filter == null) return restaurants
 
@@ -22,7 +24,9 @@ export const getFilterOptions = (
       current.rating === filter ||
       current.neighborhood === filter ||
       (current.permanantlyClosed && filter === 'permanantelyClosed') ||
-      current.type === filter
+      current.type === filter ||
+      current.location?.city === filter ||
+      current.subcategory === subcategory
     ) {
       return [...acc, current]
     }
